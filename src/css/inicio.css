@@ -1,0 +1,21 @@
+/* Altura del carrusel */
+.carousel-custom img {
+  height: 300px;
+  object-fit: cover;
+  object-position: center top; /* Mueve la imagen (arriba en este caso) */
+}
+
+/* Opcional: sombras y bordes más bonitos */
+.carousel-custom {
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* Ajuste responsivo para celular */
+@media (max-width: 768px) {
+  .carousel-custom img {
+    height: 200px;
+    object-position: center; /* Centrado en móviles */
+  }
+}
