@@ -86,24 +86,18 @@ const Inicio = () => {
     <div className="carousel-item active">
       <img src={banner1} className="d-block w-100" alt="Banner 1" />
       <div className="carousel-caption d-none d-md-block">
-        <h5>Bienvenido a EMEYPEDIA</h5>
-        <p>Explora artículos de videojuegos, series, películas y cultura geek.</p>
       </div>
     </div>
 
     <div className="carousel-item">
       <img src={banner2} className="d-block w-100" alt="Banner 2" />
       <div className="carousel-caption d-none d-md-block">
-        <h5>Contenido Actualizado</h5>
-        <p>Encuentra lo más nuevo de tus franquicias favoritas.</p>
       </div>
     </div>
 
     <div className="carousel-item">
       <img src={banner3} className="d-block w-100" alt="Banner 3" />
       <div className="carousel-caption d-none d-md-block">
-        <h5>Comparte y Descubre</h5>
-        <p>Una wiki hecha por fans, para fans.</p>
       </div>
     </div>
   </div>
@@ -125,7 +119,7 @@ const Inicio = () => {
       {loading && <p className="text-black px-3">Cargando...</p>}
       {error && <p className="text-red-500 px-3">Error: {error}</p>}
 
-      <MediaSection title="Juegos Populares" items={juegos} />
+      <MediaSection id="titulo" title="Juegos Populares" items={juegos} />
       <MediaSection title="Series Destacadas" items={series} />
       <MediaSection title="Películas Clásicas" items={peliculas} />
 

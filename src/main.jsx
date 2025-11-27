@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { Navbar } from './componentes/navabar.jsx'
 import { AuthProvider } from './services/authContext.jsx'
+import Footer from './componentes/footer.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <Navbar/>
       <Inicio/>
+      <Footer/>
     </AuthProvider>
 
   </StrictMode>,
