@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../css/loginModal.css";
-import { AuthContext } from "../authContext";
+import { AuthContext } from "../services/authContext";
 
 export const RegisterModal = ({ show, onClose, openLogin }) => {
   const { signUp } = useContext(AuthContext);
@@ -29,7 +29,6 @@ export const RegisterModal = ({ show, onClose, openLogin }) => {
       const { ok } = await signUp(email, password, username, file, bio);
 
       if (ok) {
-        alert("Cuenta creada 🎉 Revisa tu correo para confirmarla");
         onClose();
         if (openLogin) openLogin();
       }

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "../css/loginModal.css";
-import { AuthContext } from "../authContext";
+import { AuthContext } from "../services/authContext";
 
 const LoginModal = ({ show, onClose, openSignup }) => {
   const { signIn } = useContext(AuthContext);
