@@ -1,36 +1,36 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
-import '../css/app.css'
-import { supabase } from '../services/supabaseClient.js'
+import React from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
+// Componentes
+import Navbar from "./navabar.jsx"
+import Footer from "./footer.jsx"
+import Inicio from "./inicio.jsx"
+import ArticuloDetalle from "./detalleArticulo.jsx"
+import LoginModal from "./LoginModal.jsx"
+import RegisterModal from "./RegisterModal.jsx"
 
 function App() {
-  
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      {/* Navbar siempre visible */}
+      <Navbar />
+
+      {/* Rutas principales */}
+      <Routes>
+        {/* Página principal */}
+        <Route path="/" element={<Inicio />} />
+
+        {/* Detalle de artículo */}
+        <Route path="/articulo/:id" element={<ArticuloDetalle />} />
+
+        {/* Opcional: login y registro en rutas */}
+        <Route path="/login" element={<LoginModal show={true} />} />
+        <Route path="/register" element={<RegisterModal show={true} />} />
+      </Routes>
+
+      {/* Footer siempre visible */}
+      <Footer />
+    </Router>
   )
 }
 

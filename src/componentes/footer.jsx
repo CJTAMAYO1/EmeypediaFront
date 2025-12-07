@@ -51,7 +51,7 @@ const Footer = () => {
             className="footer-col"
             style={{ flex: "1 1 200px", display: "flex", alignItems: "center", gap: 10 }}
           >
-            <img src={logo} alt="Logo" width="40" height="40" />
+            <img src={logo} alt="Logo" />
             <span style={{ fontWeight: 700, fontSize: "1.05rem" }}>EMEYPEDIA</span>
           </div>
 

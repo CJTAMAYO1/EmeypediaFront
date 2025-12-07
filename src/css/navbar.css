@@ -6,9 +6,9 @@
   align-items: center;
   /* El background del primero */
   background: linear-gradient(90deg, #1f1c2c, #77709b);
-  padding: 12px 20px;
   color: white;
   gap: 12px;
+  
   /* 'justify-content: space-between' se elimina aquí para permitir 
      que el navbar-center (search) ocupe el espacio real */
 }
@@ -19,6 +19,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 70px;
 }
 
 /* Sección Central (Búsqueda) - Ocupa el espacio sobrante */

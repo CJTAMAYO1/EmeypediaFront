@@ -8,7 +8,7 @@
 
 /* Altura del carrusel */
 .carousel-custom img {
-  height: 300px;
+  height: 400px;
   object-fit: cover;
   object-position: center top; /* Mueve la imagen (arriba en este caso) */
 }
@@ -32,7 +32,7 @@
 .carousel-inner {
   display: flex;
   gap: 20px;
-  padding: 20px;
+  padding: 5px; 
   overflow-x: auto;
   scroll-behavior: smooth;
 }
