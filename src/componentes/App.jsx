@@ -8,6 +8,9 @@ import Inicio from "./inicio.jsx"
 import ArticuloDetalle from "./detalleArticulo.jsx"
 import LoginModal from "./LoginModal.jsx"
 import RegisterModal from "./RegisterModal.jsx"
+import Dashboard from "./dashboard.jsx";
+import SubirArticulo from "./crearArticulo.jsx"
+
 import Contact from './contacto';
 import About from './About';
 import Terms from './terminosyc';
@@ -21,6 +24,11 @@ function App() {
 
       {/* Rutas principales */}
       <Routes>
+        {/* Subir artículo */ }
+        <Route path="/subir-articulo" element={<SubirArticulo />} />
+        {/* Dashboard */}
+        <Route path="/dashboard" element={<Dashboard />} />
+
         {/* Página principal */}
         <Route path="/" element={<Inicio />} />
 

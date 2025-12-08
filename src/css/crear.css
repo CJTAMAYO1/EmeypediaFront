@@ -1,0 +1,265 @@
+/* ------------------------ */
+/*   BASE GENERAL SEGURA    */
+/* ------------------------ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ❗ YA NO PONEMOS FONDO AQUÍ PARA NO DAÑAR EL DASHBOARD */
+/* body { } */
+
+
+/* ------------------------ */
+/*     FONDO DEL FORM       */
+/* ------------------------ */
+
+.upload-bg {
+  min-height: 100vh;
+  padding: 40px 0;
+
+  /* Fondo glass elegante */
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+/* ------------------------ */
+/*   CONTENEDOR PRINCIPAL   */
+/* ------------------------ */
+
+.upload-container {
+  width: 90%;
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 35px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 22px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+
+  animation: fadeIn 0.8s ease;
+}
+
+
+
+/* ------------------------ */
+/*         TÍTULO           */
+/* ------------------------ */
+
+.upload-title {
+  text-align: center;
+  color: #fff;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: 1.2px;
+  animation: slideDown 0.7s ease;
+}
+
+
+
+/* ------------------------ */
+/*      CAMPOS GENERALES    */
+/* ------------------------ */
+
+.field {
+  margin-bottom: 24px;
+}
+
+.field label {
+  display: block;
+  font-weight: bold;
+  color: #f1f1f1;
+  margin-bottom: 8px;
+}
+
+/* Inputs glass */
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255,255,255,0.3);
+  color: #222;
+  font-size: 15px;
+  transition: all .25s ease;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  background: rgba(255,255,255,0.45);
+  border-color: #fff;
+  box-shadow: 0 0 12px rgba(255,255,255,0.7);
+}
+
+
+
+/* ------------------------ */
+/*    BOTÓN PRINCIPAL       */
+/* ------------------------ */
+
+.btn-submit {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  cursor: pointer;
+
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.btn-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+
+
+/* ------------------------ */
+/* BOTÓN AGREGAR CATEGORÍA */
+/* ------------------------ */
+
+.add-cat-btn {
+  background: #34c759;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all .25s ease;
+  margin-top: 10px;
+}
+
+.add-cat-btn:hover {
+  background: #2ea94f;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+
+
+/* ------------------------ */
+/*    CATEGORÍAS DINAM.     */
+/* ------------------------ */
+
+.category-box {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 18px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  position: relative;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.category-fields {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 650px) {
+  .category-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Botón eliminar categoría */
+
+.remove-cat-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  background: #ff4d4f;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.remove-cat-btn:hover {
+  background: #d9363e;
+}
+
+
+
+/* ------------------------ */
+/*         PREVIEWS         */
+/* ------------------------ */
+
+.preview-img,
+.preview-video {
+  margin-top: 10px;
+  border-radius: 14px;
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+
+
+/* ------------------------ */
+/*       ANIMACIONES        */
+/* ------------------------ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* ------------------------ */
+/*       FIX CHECKBOX       */
+/* ------------------------ */
+
+.field input[type="checkbox"] {
+  width: auto !important;
+  height: auto !important;
+  transform: scale(1.4);
+  margin-right: 8px;
+  accent-color: #00c6ff;
+  box-shadow: none !important;
+  background: none !important;
+}

@@ -23,8 +23,8 @@ const LoginModal = ({ show, onClose, openSignup }) => {
   };
 
   return (
-    <div className="modal" role="dialog" aria-modal="true">
-      <div className="modal-content">
+  <div className="modal-overlay" role="dialog" aria-modal="true">
+    <div className="modal-container">
         <h3>Iniciar sesión</h3>
 
         <input type="text" placeholder="Correo o Username"
