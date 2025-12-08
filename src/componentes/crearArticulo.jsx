@@ -244,6 +244,8 @@ export default function SubirArticulo() {
           {cargando ? "Cargando..." : "Subir artículo"}
         </button>
       </div>
+      <br />
     </div>
+
   );
 }
