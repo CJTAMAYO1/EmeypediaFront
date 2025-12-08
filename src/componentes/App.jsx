@@ -8,6 +8,10 @@ import Inicio from "./inicio.jsx"
 import ArticuloDetalle from "./detalleArticulo.jsx"
 import LoginModal from "./LoginModal.jsx"
 import RegisterModal from "./RegisterModal.jsx"
+import Dashboard from "./dashboard.jsx";
+import SubirArticulo from "./crearArticulo.jsx"
+
+
 
 function App() {
   return (
@@ -17,6 +21,11 @@ function App() {
 
       {/* Rutas principales */}
       <Routes>
+        {/* Subir artículo */ }
+        <Route path="/subir-articulo" element={<SubirArticulo />} />
+        {/* Dashboard */}
+        <Route path="/dashboard" element={<Dashboard />} />
+
         {/* Página principal */}
         <Route path="/" element={<Inicio />} />
 

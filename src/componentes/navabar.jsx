@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/navbar.css";
 import logo from "../assets/logo.png";
 import { supabase } from "../services/supabaseClient";
@@ -9,9 +10,8 @@ export const Navbar = () => {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-
-  // Nuevo: estado para la barra de búsqueda
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -30,13 +30,9 @@ export const Navbar = () => {
     setUser(null);
   };
 
-  // Nuevo: manejador de búsqueda (modifica para integrar con tu lógica)
   const handleSearch = (e) => {
     e.preventDefault();
-    // Por ahora solo muestra la consulta en consola; reemplaza por navegación/filtrado
     console.log("Buscar:", searchQuery);
-    // ejemplo: navegar a /search?q=...
-    // window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
   };
 
   return (
@@ -49,7 +45,6 @@ export const Navbar = () => {
           </a>
         </div>
 
-        {/* Centro: barra de búsqueda */}
         <div className="navbar-center" role="search" aria-label="Buscar en Emeypedia">
           <form className="search-form" onSubmit={handleSearch}>
             <input
@@ -72,7 +67,7 @@ export const Navbar = () => {
             </>
           ) : (
             <>
-              <button className="nav-btn" onClick={() => alert("Aún no hay perfil 😅!")}>Perfil</button>
+              <button className="nav-btn" onClick={() => navigate("/dashboard")}>Perfil</button>
               <button className="nav-btn logout-btn" onClick={handleLogout}>Cerrar sesión</button>
             </>
           )}

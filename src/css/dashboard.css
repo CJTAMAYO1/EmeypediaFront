@@ -1,0 +1,130 @@
+body {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #000;
+  margin: 0;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 20px;
+}
+
+/* Sidebar estilo Netflix */
+.sidebar {
+  width: 240px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  height: fit-content;
+}
+
+.sidebar h4 {
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+.sidebar a,
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  text-decoration: none;
+  color: black;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background-color: #e5e5e5;
+}
+
+.logout {
+  background-color: #ff4d4d !important;
+  color: white !important;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+}
+
+.main-content h1 {
+  margin-bottom: 15px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.badge {
+  background-color: #1a4ed8;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.card h5 {
+  margin-top: 0;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+}
+
+.card ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.card ul li a:hover {
+  text-decoration: underline;
+}
+
+.quick-links a {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+  color: black;
+}
+
+.quick-links a:last-child {
+  border-bottom: none;
+}
+
+.logout {
+  color: tomato;
+}
