@@ -11,6 +11,9 @@ import RegisterModal from "./RegisterModal.jsx"
 import Dashboard from "./dashboard.jsx";
 import SubirArticulo from "./crearArticulo.jsx"
 
+import Contact from './contacto';
+import About from './About';
+import Terms from './terminosyc';
 
 
 function App() {
@@ -35,6 +38,9 @@ function App() {
         {/* Opcional: login y registro en rutas */}
         <Route path="/login" element={<LoginModal show={true} />} />
         <Route path="/register" element={<RegisterModal show={true} />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
 
       {/* Footer siempre visible */}
