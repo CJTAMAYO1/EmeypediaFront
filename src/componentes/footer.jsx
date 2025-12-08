@@ -51,8 +51,12 @@ const Footer = () => {
             className="footer-col"
             style={{ flex: "1 1 200px", display: "flex", alignItems: "center", gap: 10 }}
           >
-            <img src={logo} alt="Logo" />
-            <span style={{ fontWeight: 700, fontSize: "1.05rem" }}>EMEYPEDIA</span>
+            <a href="/" className="brand" aria-label="Emeypedia home">
+              <img src={logo} 
+              alt="Logo"
+              style={{ width: "100px", height: "auto" }} />
+              <span style={{ fontWeight: 700, fontSize: "1.05rem" }}>EMEYPEDIA</span>
+              </a>
           </div>
 
           <div className="footer-col" style={{ flex: "1 1 200px", textAlign: "center" }}>
