@@ -1,0 +1,45 @@
+.quienes-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.quienes-title {
+    text-align: center;
+    font-size: 40px;
+    color: #0056b3;
+    margin-bottom: 40px;
+}
+
+.quienes-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.quienes-texto {
+    flex: 1;
+    min-width: 300px;
+}
+
+.quienes-texto p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.quienes-logo {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+}
+
+.quienes-logo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
