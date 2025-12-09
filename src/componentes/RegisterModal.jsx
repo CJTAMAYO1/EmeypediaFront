@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import "../css/loginModal.css";
 import { AuthContext } from "../services/authContext";
 
@@ -12,6 +12,8 @@ export const RegisterModal = ({ show, onClose, openLogin }) => {
   const [file, setFile] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const fileInputRef = useRef(null);
 
   if (!show) return null;
 
@@ -46,33 +48,63 @@ export const RegisterModal = ({ show, onClose, openLogin }) => {
 
         {errorMsg && <p className="error-msg">{errorMsg}</p>}
 
-        <input type="text" placeholder="Nombre de usuario *"
+        <input
+          type="text"
+          placeholder="Nombre de usuario *"
           disabled={loading}
-          value={username} onChange={(e) => setUsername(e.target.value)} />
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
 
-        <input type="email" placeholder="Correo *"
+        <input
+          type="email"
+          placeholder="Correo *"
           disabled={loading}
-          value={email} onChange={(e) => setEmail(e.target.value)} />
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <input type="password" placeholder="Contraseña *"
+        <input
+          type="password"
+          placeholder="Contraseña *"
           disabled={loading}
-          value={password} onChange={(e) => setPassword(e.target.value)} />
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-        <input type="file" accept="image/*"
+        {/* BOTÓN PARA CAMBIAR FOTO */}
+        <button
+          type="button"
+          className="btn-cambiar-foto"
+          onClick={() => fileInputRef.current.click()}
           disabled={loading}
-          onChange={(e) => setFile(e.target.files[0])} />
+        >
+          {file ? "Foto seleccionada" : "Seleccionar foto"}
+        </button>
+        <input
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          onChange={(e) => setFile(e.target.files[0])}
+        />
 
-        <textarea placeholder="Biografía (opcional)"
+        <textarea
+          placeholder="Biografía (opcional)"
           disabled={loading}
-          value={bio} onChange={(e) => setBio(e.target.value)} />
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+        />
 
-        <button className="login-btn" onClick={handleRegister} disabled={loading}>
+        <button
+          className="login-btn"
+          onClick={handleRegister}
+          disabled={loading}
+        >
           {loading ? "Registrando..." : "Registrar"}
         </button>
 
-        {loading && (
-          <div className="loader"></div>
-        )}
+        {loading && <div className="loader"></div>}
 
         <button className="close-btn" onClick={onClose} disabled={loading}>
           Cancelar

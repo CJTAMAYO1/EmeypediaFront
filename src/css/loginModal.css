@@ -137,3 +137,23 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-cambiar-foto {
+  display: block;
+  width: 100%;
+  margin: 0 auto 15px auto;
+  padding: 10px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-cambiar-foto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}

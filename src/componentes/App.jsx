@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Navbar from "./navabar.jsx"
 import Footer from "./footer.jsx"
 import Inicio from "./inicio.jsx"
-import ArticuloDetalle from "./detalleArticulo.jsx"
+import ArticuloDetalle from "./DetalleArticulo.jsx"
 import LoginModal from "./LoginModal.jsx"
 import RegisterModal from "./RegisterModal.jsx"
 import Dashboard from "./dashboard.jsx";
 import SubirArticulo from "./crearArticulo.jsx"
 import EditarArticulo from "./editarArticulo.jsx"
+import SearchResults from "./searchResults.jsx"
+import Perfil from "./perfil.jsx"
 
 import Contact from './contacto';
 import About from './About';
@@ -25,13 +27,15 @@ function App() {
 
       {/* Rutas principales */}
       <Routes>
-
+        {/* Resultados de búsqueda */ }
+        <Route path="/search" element={<SearchResults />} />
         {/* Subir artículo */ }
         <Route path="/subir-articulo" element={<SubirArticulo />} />
         {/* editar artículo */ }
         <Route path="/editar-articulo/:id" element={<EditarArticulo />} />
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/perfil" element={<Perfil />} />
 
         {/* Página principal */}
         <Route path="/" element={<Inicio />} />

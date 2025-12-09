@@ -62,7 +62,7 @@ export default function Dashboard() {
       <div className="sidebar">
         <h4>Menú</h4>
         <ul>
-          <li><a href="/perfil">Mi perfil</a></li>
+          <li><a onClick={()=> navigate("/perfil")}>Mi perfil</a></li>
           <li><a onClick={() => navigate("/subir-articulo")}>Subir artículo</a></li>
           <li><a href="/ajustes">Ajustes</a></li>
           <li><button onClick={handleLogout} className="logout">Cerrar sesión</button></li>
@@ -120,6 +120,12 @@ export default function Dashboard() {
             </ul>
           )}
         </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </div>
   );

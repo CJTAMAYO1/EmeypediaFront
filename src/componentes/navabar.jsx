@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/navbar.css";
-import logo from "../assets/logo.png";
 import { supabase } from "../services/supabaseClient";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
@@ -13,6 +12,7 @@ export const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
+  // Obtener usuario logueado
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setUser(data?.session?.user ?? null);
@@ -28,11 +28,14 @@ export const Navbar = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    navigate("/"); // 🔥 Redirige al inicio
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Buscar:", searchQuery);
+    if (searchQuery.trim() !== "") {
+      navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   return (
@@ -74,9 +77,14 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      <LoginModal show={showLogin} onClose={() => setShowLogin(false)} openSignup={() => { setShowLogin(false); setShowRegister(true); }} />
+      <LoginModal
+        show={showLogin}
+        onClose={() => setShowLogin(false)}
+        openSignup={() => { setShowLogin(false); setShowRegister(true); }}
+      />
       <RegisterModal show={showRegister} onClose={() => setShowRegister(false)} />
     </>
   );
 };
+
 export default Navbar;

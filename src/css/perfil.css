@@ -1,0 +1,160 @@
+/* Reset básico */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Contenedor principal centrado */
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Caja del perfil */
+.perfil-box {
+  background-color: #f8f8f8;
+  color: #111;
+  border-radius: 12px;
+  padding: 30px 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* Título */
+.perfil-box h2 {
+  margin-bottom: 30px;
+  color: #111;
+}
+
+/* Imagen de perfil */
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 15px auto;
+  object-fit: cover;
+  border: 3px solid #00cccc;
+}
+
+/* Placeholder si no hay foto */
+.foto-perfil-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  color: #555;
+  font-weight: bold;
+  border: 3px dashed #00cccc;
+}
+
+/* Botón cambiar foto */
+.btn-cambiar-foto {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-cambiar-foto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Inputs y textarea */
+.perfil-box label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #111;
+}
+
+.perfil-box input[type="text"],
+.perfil-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.perfil-box textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Switch cuenta privada */
+.switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.switch-container input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* Botón guardar */
+.btn-guardar {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-guardar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Mensajes de estado */
+.estado-msg {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: green;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .perfil-box {
+    padding: 20px;
+  }
+
+  .foto-perfil,
+  .foto-perfil-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+}
