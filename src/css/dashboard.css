@@ -1,6 +1,6 @@
 body {
-  background-color: #ffffff !important;
-  background-image: none !important;
+  background-color: #ffffff;
+  background-image: none ;
   color: #000;
   margin: 0;
 }
@@ -128,3 +128,4 @@ body {
 .logout {
   color: tomato;
 }
+

@@ -10,6 +10,7 @@ import LoginModal from "./LoginModal.jsx"
 import RegisterModal from "./RegisterModal.jsx"
 import Dashboard from "./dashboard.jsx";
 import SubirArticulo from "./crearArticulo.jsx"
+import EditarArticulo from "./editarArticulo.jsx"
 
 import Contact from './contacto';
 import About from './About';
@@ -24,8 +25,11 @@ function App() {
 
       {/* Rutas principales */}
       <Routes>
+
         {/* Subir artículo */ }
         <Route path="/subir-articulo" element={<SubirArticulo />} />
+        {/* editar artículo */ }
+        <Route path="/editar-articulo/:id" element={<EditarArticulo />} />
         {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
 

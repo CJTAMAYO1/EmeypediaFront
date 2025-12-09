@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "../services/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import "../css/crear.css";
 
 export default function SubirArticulo() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  // Obtener usuario actual
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data?.user ?? null);
+    });
+  }, []);
 
   const [titulo, setTitulo] = useState("");
   const [tipo, setTipo] = useState("");
@@ -60,11 +68,16 @@ export default function SubirArticulo() {
       .from("avatars")
       .getPublicUrl(nombre);
 
-    return url.publicUrl;
+    return url.publicUrl; // 🔥 link limpio sin corchetes
   };
 
   const subirArticulo = async () => {
-    setCargando(true); // 🔥 activa el modo cargando
+    if (!user) {
+      alert("Debes iniciar sesión.");
+      return;
+    }
+
+    setCargando(true);
 
     try {
       // SUBIR IMÁGENES
@@ -78,37 +91,41 @@ export default function SubirArticulo() {
       let videoURL = "";
       if (video) videoURL = await subirArchivo(video);
 
-      // GUARDAR EN SUPABASE
+      // Construir categorías dinámicas en objeto
+      const categoriasObj = categorias.reduce(
+        (acc, c) => ({ ...acc, [c.nombre]: c.contenido }),
+        {}
+      );
+
+      // GUARDAR ARTÍCULO
       const { error } = await supabase.from("articulos_articulo").insert({
         titulo,
         tipo,
         resumen,
         esTop: destacado,
-        imagenes: imgsURLs.join(","), // coma sin corchetes
+        autor: user.user_metadata.username, // 🔥 AQUI SE GUARDA EL AUTOR
+        imagenes: imgsURLs.join(","), // 🔥 string limpiecito
         gameplay: videoURL,
         fechaSubida: new Date(),
-        ...categorias.reduce(
-          (acc, c) => ({ ...acc, [c.nombre]: c.contenido }),
-          {}
-        ),
+        ...categoriasObj,
       });
 
       if (error) {
         console.error(error);
-        alert("Error al subir el artículo");
+        alert("Error al subir artículo");
         setCargando(false);
         return;
       }
 
-      // ESPERA 1 SEG PARA QUE SE VEA EL BOTÓN CARGANDO
       setTimeout(() => {
-        navigate("/dashboard"); // 🔥 te regresa al dashboard
-      }, 1000);
+        navigate("/dashboard");
+      }, 800);
 
     } catch (err) {
-      console.log(err);
-      setCargando(false);
+      console.error(err);
     }
+
+    setCargando(false);
   };
 
   return (
@@ -116,13 +133,13 @@ export default function SubirArticulo() {
       <div className="upload-container">
         <h2 className="upload-title">Subir Artículo</h2>
 
-        {/* Título */}
+        {/* TÍTULO */}
         <div className="field">
           <label>Título:</label>
           <input value={titulo} onChange={(e) => setTitulo(e.target.value)} />
         </div>
 
-        {/* Tipo */}
+        {/* TIPO */}
         <div className="field">
           <label>Tipo:</label>
           <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
@@ -137,7 +154,7 @@ export default function SubirArticulo() {
           </select>
         </div>
 
-        {/* Resumen */}
+        {/* RESUMEN */}
         <div className="field">
           <label>Resumen:</label>
           <textarea
@@ -147,7 +164,7 @@ export default function SubirArticulo() {
           />
         </div>
 
-        {/* Destacado */}
+        {/* DESTACADO */}
         <div className="field">
           <label>
             <input
@@ -171,6 +188,7 @@ export default function SubirArticulo() {
               handleImgPreview(e.target.files);
             }}
           />
+
           {previewImgs.length > 0 &&
             previewImgs.map((src, i) => (
               <img key={i} src={src} className="preview-img" />
@@ -188,6 +206,7 @@ export default function SubirArticulo() {
               handleVideoPreview(e.target.files[0]);
             }}
           />
+
           {previewVideo && (
             <video src={previewVideo} className="preview-video" controls />
           )}
@@ -197,6 +216,9 @@ export default function SubirArticulo() {
         <button className="add-cat-btn" onClick={agregarCategoria}>
           + Agregar categoría
         </button>
+        <br />
+        <br />
+        <br />
 
         {categorias.map((cat, i) => (
           <div className="category-box" key={i}>
@@ -233,19 +255,10 @@ export default function SubirArticulo() {
         ))}
 
         {/* BOTÓN FINAL */}
-        <br />
-        <br />
-        <br />
-        <button
-          className="btn-submit"
-          disabled={cargando}
-          onClick={subirArticulo}
-        >
+        <button className="btn-submit" disabled={cargando} onClick={subirArticulo}>
           {cargando ? "Cargando..." : "Subir artículo"}
         </button>
       </div>
-      <br />
     </div>
-
   );
 }
