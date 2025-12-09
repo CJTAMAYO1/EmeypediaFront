@@ -4,6 +4,7 @@ import "../css/navbar.css";
 import { supabase } from "../services/supabaseClient";
 import RegisterModal from "./RegisterModal";
 import LoginModal from "./LoginModal";
+import logo from "../assets/logo.png";
 
 export const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -28,7 +29,7 @@ export const Navbar = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    navigate("/"); // 🔥 Redirige al inicio
+    navigate("/"); 
   };
 
   const handleSearch = (e) => {
@@ -43,7 +44,7 @@ export const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-left">
           <a href="/" className="brand" aria-label="Emeypedia home">
-            <img src="/assets/Emeyce_SS_LOGO.png" alt="Emeypedia logo" className="nav-logo" />
+            <img src={logo} alt="Emeypedia logo" className="nav-logo" />
             <span className="brand-text">Emeypedia</span>
           </a>
         </div>

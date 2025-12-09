@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Link } from "react-router-dom"
 import { supabase } from "../services/supabaseClient"
 import banner1 from "../assets/banner1.png"
@@ -9,39 +9,73 @@ import "../css/inicio.css"
 // Card de artículo
 const MediaCard = ({ articulo }) => (
   <div className="media-card">
-    <a href={`/articulo/${articulo.id}`}>
+    <Link to={`/articulo/${articulo.id}`}>
       <div className="media-card-img-wrapper">
-        {articulo.imagenes && (
+        {articulo.imagenes ? (
           <img
             src={articulo.imagenes}
             alt={articulo.titulo}
             className="media-card-img"
           />
+        ) : (
+          <div style={{ backgroundColor: '#333', width: '100%', height: '100%' }}></div>
         )}
       </div>
       <div className="media-card-title">{articulo.titulo}</div>
-    </a>
+    </Link>
   </div>
 )
 
-// Sección de medios
+// Sección de medios (Carrusel horizontal con scroll)
 const MediaSection = ({ title, items }) => {
+  const scrollRef = useRef(null)
+
   if (!items || items.length === 0)
     return <p className="text-black px-3">No hay {title.toLowerCase()} disponibles aún.</p>
 
+  const scroll = (direction) => {
+    const { current } = scrollRef
+    if (current) {
+      const scrollAmount = direction === 'left' ? -300 : 300
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" })
+    }
+  }
+
   return (
-    <div className="media-section">
+    <div className="media-section-wrapper">
       <h2 className="section-title px-4 pt-4">{title}</h2>
-      <div className="carousel-inner">
-        {items.map(item => (
-          <MediaCard articulo={item} key={item.id} />
-        ))}
+      
+      <div className="carousel-container">
+        {/* Botón Izquierda */}
+        <button 
+          className="scroll-btn left-btn" 
+          onClick={() => scroll('left')}
+          type="button"
+        >
+          &#8249;
+        </button>
+
+        {/* Contenedor de tarjetas scrollable */}
+        <div className="media-scroller" ref={scrollRef}>
+          {items.map(item => (
+            <MediaCard articulo={item} key={item.id} />
+          ))}
+        </div>
+
+        {/* Botón Derecha */}
+        <button 
+          className="scroll-btn right-btn" 
+          onClick={() => scroll('right')}
+          type="button"
+        >
+          &#8250;
+        </button>
       </div>
     </div>
   )
 }
 
-// Component principal
+// Componente principal
 const Inicio = () => {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -50,11 +84,10 @@ const Inicio = () => {
   // ---- Supabase Fetch ----
   const fetchArticulos = async () => {
     setLoading(true)
-
     const { data, error } = await supabase
       .from("articulos_articulo")
       .select("*")
-      .order("fechaSubida", { ascending: false }) // opcional
+      .order("fechaSubida", { ascending: false })
 
     if (error) {
       console.error(error)
@@ -62,7 +95,6 @@ const Inicio = () => {
     } else {
       setData(data)
     }
-
     setLoading(false)
   }
 
@@ -88,7 +120,7 @@ const Inicio = () => {
         </p>
       </div>
 
-      {/* Carrusel */}
+      {/* Carrusel Principal (Bootstrap) */}
       <div id="carouselBanner" 
         className="carousel slide carousel-custom" 
         data-bs-ride="carousel" 
@@ -122,11 +154,11 @@ const Inicio = () => {
         </button>
       </div>
 
-      {/* Contenido */}
+      {/* Contenido (Listas horizontales) */}
       {loading && <p className="text-black px-3">Cargando...</p>}
       {error && <p className="text-red-500 px-3">Error: {error}</p>}
 
-      <MediaSection id="titulo" title="Juegos Populares" items={juegos} />
+      <MediaSection title="Juegos Populares" items={juegos} />
       <MediaSection title="Series Destacadas" items={series} />
       <MediaSection title="Películas Clásicas" items={peliculas} />
 

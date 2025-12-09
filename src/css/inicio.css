@@ -1,10 +1,11 @@
 /* CONTENEDOR GENERAL */
 .page-container {
   background-color: #ffffff;
-  color: #ffd2d2;
+  color: #333;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Evita scroll horizontal indeseado de la página */
 }
 
 /* BANNER PROMOCIÓN APP */
@@ -31,11 +32,12 @@
   color: #0073e6;
 }
 
-/* CARRUSEL */
+/* CARRUSEL PRINCIPAL (BOOTSTRAP) */
 .carousel-custom {
   border-radius: 10px;
   overflow: hidden;
   margin: 20px auto;
+  max-width: 98%;
 }
 
 .carousel-custom img {
@@ -44,7 +46,6 @@
   object-position: center top;
 }
 
-/* Ajuste responsivo */
 @media (max-width: 768px) {
   .carousel-custom img {
     height: 200px;
@@ -52,17 +53,42 @@
   }
 }
 
-/* GRID DE TARJETAS */
-.carousel-inner {
-  display: flex;
-  gap: 20px;
-  padding: 5px; 
-  overflow-x: auto;
-  scroll-behavior: smooth;
+/* --- SECCIONES DE TARJETAS (SCROLLER HORIZONTAL) --- */
+
+.media-section-wrapper {
+  position: relative;
+  margin-bottom: 20px;
 }
 
-/* TARJETA */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* Contenedor Flex de las tarjetas */
+.media-scroller {
+  display: flex;
+  gap: 20px;
+  padding: 20px 5px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex-wrap: nowrap; /* IMPORTANTE: Esto evita que bajen de línea */
+  width: 100%;
+  
+  /* Ocultar barra de scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.media-scroller::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* TARJETA INDIVIDUAL */
 .media-card {
+  flex: 0 0 auto; /* IMPORTANTE: Mantiene el ancho fijo de la tarjeta */
   width: 200px;
   background-color: #111;
   border-radius: 12px;
@@ -72,12 +98,18 @@
   cursor: pointer;
 }
 
-.media-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+.media-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
-/* IMAGEN */
+.media-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* IMAGEN DENTRO DE LA TARJETA */
 .media-card-img-wrapper {
   width: 100%;
   height: 250px;
@@ -87,6 +119,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .media-card-img {
@@ -95,12 +128,14 @@
   object-fit: cover;
 }
 
-/* TITULO */
+/* TITULO DE TARJETA */
 .media-card-title {
-  margin-top: 10px;
   font-size: 1rem;
   font-weight: bold;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* TITULOS DE SECCIÓN */
@@ -108,25 +143,48 @@
   font-size: 1.6rem;
   font-weight: bold;
   color: #3f3f3f;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding-left: 16px;
 }
 
-/* RESPONSIVO GENERAL */
-@media (max-width: 768px) {
-  .carousel-inner {
-    gap: 12px;
-  }
+/* BOTONES DE SCROLL (FLECHAS) */
+.scroll-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transition: background 0.3s;
+}
 
+.scroll-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.left-btn { left: 10px; }
+.right-btn { right: 10px; }
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
   .media-card {
     width: 150px;
   }
-
   .media-card-img-wrapper {
     height: 180px;
   }
-
   .section-title {
     font-size: 1.4rem;
+  }
+  /* En móviles ocultamos las flechas porque usan touch */
+  .scroll-btn {
+    display: none;
   }
 }
