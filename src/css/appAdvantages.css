@@ -1,0 +1,153 @@
+.app-advantages-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #1f1c2c;
+}
+
+.app-advantages-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.app-advantages-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.app-advantages-header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.advantages-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.advantage {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 24px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.advantage h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.advantage p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.screenshots-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.screenshots-section h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.screenshots-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.screenshot img {
+  width: 200px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.download-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.download-section h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.download-section p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+.download-buttons button {
+  background: #1f1c2c;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  margin: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.download-buttons button:hover {
+  background: #444;
+}
+
+.ios-btn {
+  background: #0a84ff;
+}
+
+.android-btn {
+  background: #3ddc84;
+}
+
+.download-buttons button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .advantages-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .screenshots-container {
+    flex-direction: column;
+  }
+}
+
+
+.download-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.download-section h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.download-link {
+  display: inline-block;
+  background: #1f1c2c;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.download-link:hover {
+  background: #333;
+}

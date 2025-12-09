@@ -13,6 +13,7 @@ import SubirArticulo from "./crearArticulo.jsx"
 import EditarArticulo from "./editarArticulo.jsx"
 import SearchResults from "./searchResults.jsx"
 import Perfil from "./perfil.jsx"
+import AppAdvantages from "./AppAdvantages.jsx";
 
 import Contact from './contacto';
 import About from './About';
@@ -27,6 +28,7 @@ function App() {
 
       {/* Rutas principales */}
       <Routes>
+         <Route path="/app-advantages" element={<AppAdvantages />} />
         {/* Resultados de búsqueda */ }
         <Route path="/search" element={<SearchResults />} />
         {/* Subir artículo */ }

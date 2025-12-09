@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { supabase } from "../services/supabaseClient"
 import banner1 from "../assets/banner1.png"
 import banner2 from "../assets/banner2.png"
@@ -76,44 +77,50 @@ const Inicio = () => {
 
   return (
     <div className="page-container">
+
+      {/* Banner de promoción de la app */}
+      <div className="app-promo-banner">
+        <p>
+          CONOCE NUESTRA <strong>APP móvil</strong> -{" "}
+          <Link to="/app-advantages" className="app-promo-link">
+            Ver ventajas
+          </Link>
+        </p>
+      </div>
+
       {/* Carrusel */}
       <div id="carouselBanner" 
-  className="carousel slide carousel-custom" 
-  data-bs-ride="carousel" 
-  data-bs-interval="4000"
->
-  <div className="carousel-inner">
-    <div className="carousel-item active">
-      <img src={banner1} className="d-block w-100" alt="Banner 1" />
-      <div className="carousel-caption d-none d-md-block">
+        className="carousel slide carousel-custom" 
+        data-bs-ride="carousel" 
+        data-bs-interval="4000"
+      >
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src={banner1} className="d-block w-100" alt="Banner 1" />
+            <div className="carousel-caption d-none d-md-block"></div>
+          </div>
+
+          <div className="carousel-item">
+            <img src={banner2} className="d-block w-100" alt="Banner 2" />
+            <div className="carousel-caption d-none d-md-block"></div>
+          </div>
+
+          <div className="carousel-item">
+            <img src={banner3} className="d-block w-100" alt="Banner 3" />
+            <div className="carousel-caption d-none d-md-block"></div>
+          </div>
+        </div>
+
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon"></span>
+          <span className="visually-hidden">Anterior</span>
+        </button>
+
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+          <span className="carousel-control-next-icon"></span>
+          <span className="visually-hidden">Siguiente</span>
+        </button>
       </div>
-    </div>
-
-    <div className="carousel-item">
-      <img src={banner2} className="d-block w-100" alt="Banner 2" />
-      <div className="carousel-caption d-none d-md-block">
-      </div>
-    </div>
-
-    <div className="carousel-item">
-      <img src={banner3} className="d-block w-100" alt="Banner 3" />
-      <div className="carousel-caption d-none d-md-block">
-      </div>
-    </div>
-  </div>
-
-  <button className="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
-    <span className="carousel-control-prev-icon"></span>
-    <span className="visually-hidden">Anterior</span>
-  </button>
-
-  <button className="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
-    <span className="carousel-control-next-icon"></span>
-    <span className="visually-hidden">Siguiente</span>
-  </button>
-</div>
-
-
 
       {/* Contenido */}
       {loading && <p className="text-black px-3">Cargando...</p>}

@@ -1,3 +1,4 @@
+/* CONTENEDOR GENERAL */
 .page-container {
   background-color: #ffffff;
   color: #ffd2d2;
@@ -6,29 +7,52 @@
   padding: 0;
 }
 
-/* Altura del carrusel */
-.carousel-custom img {
-  height: 400px;
-  object-fit: cover;
-  object-position: center top; /* Mueve la imagen (arriba en este caso) */
+/* BANNER PROMOCIÓN APP */
+.app-promo-banner {
+  background: #1f1c2c;
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-/* Opcional: sombras y bordes más bonitos */
+.app-promo-banner strong {
+  color: #ffd700;
+}
+
+.app-promo-link {
+  color: #0a84ff;
+  text-decoration: underline;
+  margin-left: 8px;
+}
+
+.app-promo-link:hover {
+  color: #0073e6;
+}
+
+/* CARRUSEL */
 .carousel-custom {
   border-radius: 10px;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
-/* Ajuste responsivo para celular */
+.carousel-custom img {
+  height: 400px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Ajuste responsivo */
 @media (max-width: 768px) {
   .carousel-custom img {
     height: 200px;
-    object-position: center; /* Centrado en móviles */
+    object-position: center;
   }
 }
 
-/* GRID GENERAL */
+/* GRID DE TARJETAS */
 .carousel-inner {
   display: flex;
   gap: 20px;
@@ -40,7 +64,7 @@
 /* TARJETA */
 .media-card {
   width: 200px;
-  background-color: #111; /* o el color que uses */
+  background-color: #111;
   border-radius: 12px;
   padding: 10px;
   text-align: center;
@@ -85,5 +109,24 @@
   font-weight: bold;
   color: #3f3f3f;
   margin-bottom: 10px;
+  padding-left: 16px;
 }
 
+/* RESPONSIVO GENERAL */
+@media (max-width: 768px) {
+  .carousel-inner {
+    gap: 12px;
+  }
+
+  .media-card {
+    width: 150px;
+  }
+
+  .media-card-img-wrapper {
+    height: 180px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+}
