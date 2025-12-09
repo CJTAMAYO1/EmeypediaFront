@@ -44,7 +44,7 @@ const AppAdvantages = () => {
         <h2>¡Descárgala ahora!</h2>
         <p>
           <a
-            href="https://mega.nz/file/FxEQASIY#be5MSuFS-FAWEs924qVJlzTB0WWZ7Ot1OfolG8tyekA"
+            href="https://mega.nz/file/0t0WxT7S#SiGeWeLdrp6k_-ipa7QeWHFf74JjlKsghtDITK7jB_0"
             target="_blank"
             rel="noopener noreferrer"
             className="download-link"
