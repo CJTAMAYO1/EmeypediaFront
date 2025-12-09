@@ -1,0 +1,168 @@
+/* =========================================
+   NAVBAR CONTAINER & LAYOUT
+   ========================================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  /* El background del primero */
+  background: linear-gradient(90deg, #1f1c2c, #77709b);
+  color: white;
+  gap: 12px;
+  
+  /* 'justify-content: space-between' se elimina aquí para permitir 
+     que el navbar-center (search) ocupe el espacio real */
+}
+
+/* Secciones Izquierda y Derecha */
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 70px;
+}
+
+/* Sección Central (Búsqueda) - Ocupa el espacio sobrante */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+/* =========================================
+   BRANDING (LOGO & TEXT)
+   ========================================= */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-logo {
+  width: 40px;
+  height: auto;
+  display: block;
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+
+/* =========================================
+   SEARCH FORM STYLES
+   ========================================= */
+.search-form {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 640px;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  /* Estilo visual coherente con los botones del CSS 1 */
+  border: 1px solid rgba(255, 255, 255, 0.18); 
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+  transition: background 0.2s ease;
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================
+   BUTTON STYLES (Prioridad CSS 1)
+   ========================================= */
+
+/* Estilo base para botones normales */
+.nav-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 180ms ease, transform 120ms ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+/* Botones de Acción Principal (Registrarse y Buscar) */
+/* Unificamos estilos para que ambos se vean igual de bien */
+.register-btn, 
+.search-btn {
+  background: linear-gradient(90deg, #6a5acd, #7c6eef);
+  border: none; /* Sin borde como en el CSS 1 */
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: filter 0.2s ease, transform 0.12s ease;
+}
+
+.register-btn:hover, 
+.search-btn:hover {
+  filter: brightness(1.1); /* Efecto brillo del CSS 1 */
+  transform: translateY(-1px);
+}
+
+/* Botón Destructivo (Logout) - Exactamente del CSS 1 */
+.logout-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 0, 0, 0.12);
+  color: #ffd6d6;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 0, 0, 0.06);
+  border-color: rgba(255, 0, 0, 0.25);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 640px) {
+  .brand-text {
+    display: none;
+  }
+  
+  .nav-logo {
+    width: 36px;
+  }
+  
+  .nav-btn, .search-btn, .register-btn {
+    padding: 7px 10px;
+    font-size: 0.95rem;
+  }
+
+  /* Ocultamos la barra de búsqueda central en móviles 
+     para evitar que rompa el layout */
+  .navbar-center {
+    display: none;
+  }
+}

@@ -44,7 +44,7 @@ export const Navbar = () => {
       <nav className="navbar">
         <div className="navbar-left">
           <a href="/" className="brand" aria-label="Emeypedia home">
-            <img src={logo} alt="Emeypedia logo" className="nav-logo" />
+            <img src="/assets/Emeyce_SS_LOGO.png" alt="Emeypedia logo" className="nav-logo" />
             <span className="brand-text">Emeypedia</span>
           </a>
         </div>
