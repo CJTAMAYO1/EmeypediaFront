@@ -17,6 +17,21 @@ export default function Dashboard() {
     setMisArticulos(articulos || []);
   };
 
+  const fetchComentarios = async (username) => {
+    // Obtener comentarios junto con título del artículo
+    const { data: comentarios } = await supabase
+      .from("comentarios_comentario")
+      .select(`
+        id,
+        texto,
+        articulo_id,
+        articulo:articulo_id(id, titulo)
+      `)
+      .eq("autor", username);
+
+    setMisComentarios(comentarios || []);
+  };
+
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
       const userData = data?.user ?? null;
@@ -25,13 +40,7 @@ export default function Dashboard() {
       if (userData) {
         const username = userData.user_metadata?.username;
         await fetchArticulos(username);
-
-        const { data: comentarios } = await supabase
-          .from("comentarios")
-          .select("*")
-          .eq("autor", username);
-
-        setMisComentarios(comentarios || []);
+        await fetchComentarios(username);
       }
     });
   }, []);
@@ -39,6 +48,13 @@ export default function Dashboard() {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     window.location.href = "/";
+  };
+
+  const handleEliminarArticulo = async (id) => {
+    if (window.confirm("¿Seguro que deseas eliminar este artículo?")) {
+      await supabase.from("articulos_articulo").delete().eq("id", id);
+      fetchArticulos(user.user_metadata.username);
+    }
   };
 
   return (
@@ -74,12 +90,7 @@ export default function Dashboard() {
                     Editar
                   </button>
                   <button 
-                    onClick={async () => {
-                      if(window.confirm("¿Seguro que deseas eliminar este artículo?")) {
-                        await supabase.from("articulos_articulo").delete().eq("id", a.id);
-                        fetchArticulos(user.user_metadata.username);
-                      }
-                    }}
+                    onClick={() => handleEliminarArticulo(a.id)}
                     style={{ marginLeft: "4px" }}
                   >
                     Eliminar
@@ -98,9 +109,12 @@ export default function Dashboard() {
             <ul>
               {misComentarios.map((c) => (
                 <li key={c.id}>
+                  <strong>En artículo: </strong>
                   <a href={`/articulo/${c.articulo_id}`}>
-                    {c.contenido.substring(0, 60)}...
+                    {c.articulo?.titulo || "Artículo eliminado"}
                   </a>
+                  <br />
+                  {c.texto.substring(0, 100)}...
                 </li>
               ))}
             </ul>
