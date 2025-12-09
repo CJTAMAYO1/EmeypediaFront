@@ -23,7 +23,7 @@ import logo from "../assets/Emeyce_SS_LOGO.png";
 
         {/* Columna Derecha */}
         <div className="quienes-logo">
-          <img src={logo} 
+          <img src="/assets/Emeyce_SS_LOGO.png" 
           alt="Emeyce Logo" 
           style={{ width: "350px", height: "auto" }} />
         </div>
